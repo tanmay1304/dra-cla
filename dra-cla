@@ -1,3 +1,7 @@
+# Ensure the locale is set to UTF-8 to avoid illegal byte sequence errors
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 #!/bin/sh
 
 #shellcheck disable=SC2154
