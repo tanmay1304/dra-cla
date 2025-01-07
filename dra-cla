@@ -14,7 +14,7 @@ logdir="${XDG_CACHE_HOME:-$HOME/.cache}"
 logfile="$logdir/dra-hsts"
 quality=best
 scrape=query
-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/13$(head -5 /dev/urandom | LC_ALL="en_US.UTF-8" tr -dc '0-5' | cut -c1).0.0.0 Safari/537.36"
+agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/13$(head -5 /dev/urandom | LC_ALL="en_US.UTF-8" gtr -dc '0-5' | cut -c1).0.0.0 Safari/537.36"
 trap 'rm -f '"$logfile"'.new' INT HUP
 
 ############
@@ -102,7 +102,7 @@ ask() {
 #############
 
 dep_ch() {
-	for dep in $(printf "%s" "$1" | LC_ALL="en_US.UTF-8" tr ' ' '\n'); do
+	for dep in $(printf "%s" "$1" | LC_ALL="en_US.UTF-8" gtr ' ' '\n'); do
 		command -v "$dep" >/dev/null || {
 			log "Program $dep not found. Please install it\n" "31"
 			[ "$dep" = "aria2c" ] && log "To install $dep, Type <your_package_manager> aria2" "32"
